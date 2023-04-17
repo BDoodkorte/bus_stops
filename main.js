@@ -14,12 +14,17 @@ let long = mainFunctions.longPC(pcData);
 let bsData = await mainFunctions.busStopData(lat,long);
 
 // Print two nearest busstops to postcode
+if(bsData.stopPoints.length == 0){
+    console.log("There are no TFL bus stops near that postcode.")
+}
+else{
 console.log(`The nearest two bus stops to your location are \n
 ${bsData.stopPoints[0].commonName} : ${bsData.stopPoints[0].indicator} \n 
 ${bsData.stopPoints[1].commonName} : ${bsData.stopPoints[1].indicator} \n`);
 
+
 // Print next busses to arrive for stop 1
-console.log(`The next busses to arrive at ${bsData.stopPoints[0].commonName} are: \n`);
+console.log(`The next busses to arrive at ${bsData.stopPoints[0].commonName} : ${bsData.stopPoints[1].indicator}are: \n`);
 
 // Function 4: Generate busstop ID and fetch bus arrival data () and cut it to size and loop through all the incoming busses
 let bsArrivalData = await mainFunctions.busArrivalData(bsData,0);
@@ -31,7 +36,7 @@ if (bsArray.length===0){
     console.log(...bsArray)};
 
 // Print next busses to arrive for stop 2
-console.log(`The next busses to arrive at ${bsData.stopPoints[1].commonName} are: \n`);
+console.log(`The next busses to arrive at ${bsData.stopPoints[1].commonName} : ${bsData.stopPoints[1].indicator} are: \n`);
 
 // Function 4
 bsArrivalData = await mainFunctions.busArrivalData(bsData,1);
@@ -41,3 +46,4 @@ if (bsArray.length===0){
     console.log("There is no imminent bus.\n")
 }else{
     console.log(...bsArray)};
+}

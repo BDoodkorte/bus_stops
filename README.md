@@ -4,4 +4,4 @@ This project allows you to view the next buses arriving at your two nearest bus 
 
 ## Setup
 
-Just run npm install to set up the dependencies, and then npm start to run the project.
+Just run ***npm install*** to set up the dependencies, and then ***npm start*** to run the project.
