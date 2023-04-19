@@ -67,6 +67,20 @@ export async function busStopData(lat,long){
     return busStopData;
 }
 
+// 3.1 Fetch route from Postcode and StopPoint Id
+export async function routeData(postCode, busStopData, n){
+    let id = busStopData.stopPoints[n].id; 
+    let url = `https://api.digital.tfl.gov.uk/Journey/JourneyResults/${postCode}/to/${id}`;
+    try {
+        let routeAPIresponse = await fetch(url);
+        let routeData = await routeAPIresponse.json();
+        return routeData;
+    } finally {
+        let error = console.log('API not functioning');
+        return error;
+      }
+}
+
 
 // 4.1 Generate busstop ID and fetch bus arrival data () and cut it to size
 export async function busArrivalData(busStopData,n){

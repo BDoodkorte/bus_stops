@@ -24,7 +24,7 @@ ${bsData.stopPoints[1].commonName} : ${bsData.stopPoints[1].indicator} \n`);
 
 
 // Print next busses to arrive for stop 1
-console.log(`The next busses to arrive at ${bsData.stopPoints[0].commonName} : ${bsData.stopPoints[1].indicator}are: \n`);
+console.log(`The next busses to arrive at ${bsData.stopPoints[0].commonName} : ${bsData.stopPoints[0].indicator} are: \n`);
 
 // Function 4: Generate busstop ID and fetch bus arrival data () and cut it to size and loop through all the incoming busses
 let bsArrivalData = await mainFunctions.busArrivalData(bsData,0);
@@ -47,3 +47,13 @@ if (bsArray.length===0){
 }else{
     console.log(...bsArray)};
 }
+
+// Function 3.1 - Get routes
+console.log(`The route to ${bsData.stopPoints[0].commonName} : ${bsData.stopPoints[0].indicator} is:`)
+let routeData = await mainFunctions.routeData(pcData,bsData,0);
+console.log(routeData);
+
+
+console.log(`The route to ${bsData.stopPoints[1].commonName} : ${bsData.stopPoints[1].indicator} is:`)
+routeData = await mainFunctions.routeData(pcData,bsData,0);
+console.log(routeData);
